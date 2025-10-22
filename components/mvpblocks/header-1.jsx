@@ -22,12 +22,14 @@ export default function Header1() {
   const languages = [
     { code: "en", label: t('language.english'), flag: "🇬🇧", display: "EN" },
     { code: "fr", label: t('language.french'), flag: "🇫🇷", display: "FR" },
+    { code: "ar", label: t('language.arabic'), flag: "🇲🇦", display: "AR" },
   ];
 
   // Navigation items with translations
   const navItems = [
     { name: t('nav.home'), href: "/" },
     { name: t('nav.features'), href: "/features" },
+    { name: t('nav.services'), href: "/services" },
     {
       name: t('nav.products'),
       href: "/products",

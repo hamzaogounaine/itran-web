@@ -34,14 +34,14 @@ export default function Footer4Col() {
   ];
 
   const serviceLinks = [
-    { text: t("services.webdev"), href: "/web-development" },
-    { text: t("services.webdesign"), href: "/web-design" },
-    { text: t("services.marketing"), href: "/marketing" },
-    { text: t("services.googleads"), href: "/google-ads" },
+    { text: t("services.webdev"), href: "/services/1" },
+    { text: t("services.webdesign"), href: "/services/2" },
+    { text: t("services.marketing"), href: "/services/3" },
+    { text: t("services.googleads"), href: "/services/4" },
   ];
 
   const helpfulLinks = [
-    { text: t("help.faqs"), href: "/faqs" },
+    { text: t("help.faqs"), href: "/faq" },
     { text: t("help.support"), href: "/support" },
     { text: t("help.liveChat"), href: "/live-chat", hasIndicator: true },
   ];

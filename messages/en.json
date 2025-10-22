@@ -7,6 +7,7 @@
     "nav": {
       "home": "Home",
       "features": "Features",
+      "services": "Services",
       "products": "Products",
       "pricing": "Pricing",
       "about": "About"
@@ -31,7 +32,8 @@
     "language": {
       "label": "Language",
       "english": "English",
-      "french": "Français"
+      "french": "Français",
+      "arabic": "العربية"
     },
     "loading": "Loading...",
     "loadingAssets": "Loading assets..."
@@ -216,6 +218,56 @@
     "subtitle": "Explore some of our recent work.",
     "showMore": "Show More",
     "showLess": "Show Less"
+  },
+  "services": {
+    "metadata": {
+      "title": "Our Services",
+      "description": "Professional web development, design, marketing, and Google Ads services to grow your business online."
+    },
+    "hero": {
+      "title": "Our Services",
+      "description": "Professional digital solutions tailored to your business needs. From web development to marketing, we've got you covered."
+    },
+    "learnMore": "Learn More",
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Let's discuss your project and find the perfect solution for your business needs.",
+      "button": "Get a Free Quote"
+    }
+  },
+  "faq": {
+    "metadata": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about our web development, design, and marketing services."
+    },
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions about our services and processes.",
+    "items": [
+      {
+        "q": "How long does it take to build a website?",
+        "a": "The timeline depends on the complexity of your project. A simple website typically takes 2-4 weeks, while more complex projects can take 6-8 weeks. We'll provide a detailed timeline during our initial consultation."
+      },
+      {
+        "q": "Do you provide ongoing support after launch?",
+        "a": "Yes! We offer comprehensive post-launch support including maintenance, updates, security monitoring, and technical assistance. Our support packages are tailored to your specific needs."
+      },
+      {
+        "q": "Can you help with SEO and digital marketing?",
+        "a": "Absolutely! We offer full-service digital marketing including SEO optimization, Google Ads management, social media marketing, and content creation to help your business grow online."
+      },
+      {
+        "q": "What technologies do you use?",
+        "a": "We use modern technologies like Next.js, React, Node.js, and Tailwind CSS to build fast, secure, and scalable websites. We also work with WordPress and other platforms when appropriate."
+      },
+      {
+        "q": "Do you work with international clients?",
+        "a": "Yes! While we're based in Morocco, we work with clients worldwide. We offer services in English, French, and Arabic, and can accommodate different time zones."
+      },
+      {
+        "q": "What's included in your web design service?",
+        "a": "Our web design service includes custom UI/UX design, responsive layouts, brand integration, user experience optimization, and design revisions until you're completely satisfied."
+      }
+    ]
   },
   "about": {
     "metadata": {

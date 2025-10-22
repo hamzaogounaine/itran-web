@@ -8,6 +8,7 @@
     "nav": {
       "home": "Accueil",
       "features": "Fonctionnalités",
+      "services": "Services",
       "products": "Produits",
       "pricing": "Tarification",
       "about": "À propos"
@@ -32,7 +33,8 @@
     "language": {
       "label": "Langue",
       "english": "English",
-      "french": "Français"
+      "french": "Français",
+      "arabic": "العربية"
     },
     "loading": "Chargement...",
     "loadingAssets": "Chargement des ressources..."
@@ -167,6 +169,56 @@
   "subtitle": "Découvrez quelques-unes de nos réalisations récentes.",
   "showMore": "Voir plus",
   "showLess": "Voir moins"
+},
+"services": {
+  "metadata": {
+    "title": "Nos Services",
+    "description": "Services professionnels de développement web, design, marketing et Google Ads pour développer votre entreprise en ligne."
+  },
+  "hero": {
+    "title": "Nos Services",
+    "description": "Solutions numériques professionnelles adaptées à vos besoins commerciaux. Du développement web au marketing, nous avons tout ce qu'il vous faut."
+  },
+  "learnMore": "En savoir plus",
+  "cta": {
+    "title": "Prêt à commencer ?",
+    "description": "Discutons de votre projet et trouvons la solution parfaite pour vos besoins commerciaux.",
+    "button": "Obtenir un devis gratuit"
+  }
+},
+"faq": {
+  "metadata": {
+    "title": "Questions Fréquemment Posées",
+    "description": "Trouvez des réponses aux questions courantes sur nos services de développement web, design et marketing."
+  },
+  "title": "Questions Fréquemment Posées",
+  "subtitle": "Trouvez des réponses aux questions les plus courantes sur nos services et processus.",
+  "items": [
+    {
+      "q": "Combien de temps faut-il pour créer un site web ?",
+      "a": "Le délai dépend de la complexité de votre projet. Un site web simple prend généralement 2-4 semaines, tandis que les projets plus complexes peuvent prendre 6-8 semaines. Nous fournirons un calendrier détaillé lors de notre consultation initiale."
+    },
+    {
+      "q": "Offrez-vous un support continu après le lancement ?",
+      "a": "Oui ! Nous offrons un support complet post-lancement incluant la maintenance, les mises à jour, la surveillance de sécurité et l'assistance technique. Nos packages de support sont adaptés à vos besoins spécifiques."
+    },
+    {
+      "q": "Pouvez-vous aider avec le SEO et le marketing digital ?",
+      "a": "Absolument ! Nous offrons un marketing digital complet incluant l'optimisation SEO, la gestion Google Ads, le marketing sur les réseaux sociaux et la création de contenu pour faire croître votre entreprise en ligne."
+    },
+    {
+      "q": "Quelles technologies utilisez-vous ?",
+      "a": "Nous utilisons des technologies modernes comme Next.js, React, Node.js et Tailwind CSS pour créer des sites web rapides, sécurisés et évolutifs. Nous travaillons aussi avec WordPress et d'autres plateformes quand c'est approprié."
+    },
+    {
+      "q": "Travaillez-vous avec des clients internationaux ?",
+      "a": "Oui ! Bien que nous soyons basés au Maroc, nous travaillons avec des clients du monde entier. Nous offrons des services en anglais, français et arabe, et pouvons nous adapter à différents fuseaux horaires."
+    },
+    {
+      "q": "Qu'est-ce qui est inclus dans votre service de design web ?",
+      "a": "Notre service de design web inclut la conception UI/UX personnalisée, les mises en page responsives, l'intégration de marque, l'optimisation de l'expérience utilisateur et les révisions de design jusqu'à ce que vous soyez complètement satisfait."
+    }
+  ]
 },
 
   "about": {
