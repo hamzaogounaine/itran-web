@@ -6,40 +6,23 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-// Removed: import { motion } from "framer-motion";
-
-// Add CSS keyframes for a simple slide-in animation to your global CSS (e.g., globals.css):
-/* @keyframes slide-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-in-up {
-  animation: slide-in-up 0.6s ease-out forwards;
-} 
-*/
+import { motion } from "framer-motion";
 
 const FAQSection = () => {
   const t = useTranslations("faq");
-  // Assuming 'items' is an array in your translation file
-  const faqs = t.raw("items"); 
+  const faqs = t.raw("items"); // fetch array of questions & answers
 
   return (
     <section className="relative py-32 px-6">
-      {/* Background effects - Simplified for better mobile performance */}
-  
+      {/* Background effects */}
+    
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* 1. Header with CSS-only animation for a smooth entrance */}
-        <div 
-          className="text-center mb-20 animate-slide-in-up" 
-          style={{ animationDuration: '0.6s' }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
           <span className="text-primary font-semibold text-lg tracking-wide uppercase mb-4 block">
             FAQ
@@ -53,40 +36,39 @@ const FAQSection = () => {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
-        </div>
+        </motion.div>
 
-        {/* 2. Accordion Container with an initial animation */}
-        <div 
-          className="animate-slide-in-up" 
-          style={{ animationDuration: '0.6s', animationDelay: '0.2s' }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="animate-slide-up"
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              // 3. Individual Accordion Item with staggered animation 
-              // (Set a simple delay for staggered effect)
-              <div 
-                key={index} 
-                className="animate-slide-in-up" 
-                style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
+              <motion.div
+                key={index}
+                
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <AccordionItem
                   value={`item-${index}`}
-                  // CRITICAL FIX: Removed backdrop-blur-sm for mobile performance.
-                  // Used a slightly less transparent background for visual effect.
-                  className="bg-foreground/80 rounded-xl border border-border/30 px-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300"
+                  className="bg-foreground/50 backdrop-blur-sm rounded-xl border border-border/30 px-6 hover:border-primary/40 hover:shadow-xl transition-all duration-300"
                 >
                   <AccordionTrigger className="text-left font-semibold text-white hover:text-primary py-6 [&>svg]:text-white hover:[&>svg]:text-primary">
-                    {faq.q}
-                  </AccordionTrigger>
+  {faq.q}
+</AccordionTrigger>
 
                   <AccordionContent className="text-gray-300 leading-relaxed pb-6">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
-              </div>
+              </motion.div>
             ))}
           </Accordion>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
