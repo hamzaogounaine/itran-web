@@ -266,7 +266,7 @@ export default function Header1() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 prefetch={false}
-                href="/signup"
+                href="/contact"
                 className="inline-flex items-center space-x-2 rounded-full bg-[var(--primary)] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
                 <span>{t('cta.getQuote')}</span>
@@ -398,7 +398,7 @@ export default function Header1() {
                   >
                     <Link
                       prefetch={false}
-                      href="/signup"
+                      href="/contact"
                       className="group relative block overflow-hidden rounded-xl bg-gradient-to-r from-[var(--primary)] to-[var(--primary)]/80 px-6 py-4 text-center font-semibold text-white shadow-lg shadow-[var(--primary)]/25 transition-all duration-300 hover:shadow-xl hover:shadow-[var(--primary)]/40"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
