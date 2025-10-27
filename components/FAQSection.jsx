@@ -8,23 +8,44 @@ import {
 } from "@/components/ui/accordion";
 // Removed: import { motion } from "framer-motion";
 
+// Add CSS keyframes for a simple slide-in animation to your global CSS (e.g., globals.css):
+/* @keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out forwards;
+} 
+*/
+
 const FAQSection = () => {
   const t = useTranslations("faq");
-  // Assuming 'items' is an array in your translation file, e.g., "faq.items": [{ "q": "...", "a": "..." }, ...]
-  // Note: t.raw() is a next-intl-specific method to fetch non-string data
+  // Assuming 'items' is an array in your translation file
   const faqs = t.raw("items"); 
 
   return (
     <section className="relative py-32 px-6">
-      {/* Background effects */}
+      {/* Background effects - Simplified for better mobile performance */}
       <div className="absolute inset-0 z-0">
+        {/* Retained Radial Gradient - It's generally fine */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-white/5 to-white/5"></div>
-        <div className="bg-primary/5 absolute top-0 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 rounded-full blur-3xl"></div>
+        {/* Simplified Blur - Less intense to aid GPU performance on scroll/render */}
+        <div className="bg-primary/5 absolute top-0 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 rounded-full blur-2xl opacity-70"></div>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Replaced motion.div with a standard div */}
-        <div className="text-center mb-20"> 
+        {/* 1. Header with CSS-only animation for a smooth entrance */}
+        <div 
+          className="text-center mb-20 animate-slide-in-up" 
+          style={{ animationDuration: '0.6s' }}
+        >
           <span className="text-primary font-semibold text-lg tracking-wide uppercase mb-4 block">
             FAQ
           </span>
@@ -39,15 +60,25 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* Replaced motion.div with a standard div */}
-        {/* The original 'animate-slide-up' class is kept if it provides CSS-based animation */}
-        <div className="animate-slide-up"> 
+        {/* 2. Accordion Container with an initial animation */}
+        <div 
+          className="animate-slide-in-up" 
+          style={{ animationDuration: '0.6s', animationDelay: '0.2s' }}
+        >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <div> 
+              // 3. Individual Accordion Item with staggered animation 
+              // (Set a simple delay for staggered effect)
+              <div 
+                key={index} 
+                className="animate-slide-in-up" 
+                style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
+              >
                 <AccordionItem
                   value={`item-${index}`}
-                  className="bg-foreground/50 backdrop-blur-sm rounded-xl border border-border/30 px-6 hover:border-primary/40 hover:shadow-xl transition-all duration-300"
+                  // CRITICAL FIX: Removed backdrop-blur-sm for mobile performance.
+                  // Used a slightly less transparent background for visual effect.
+                  className="bg-foreground/80 rounded-xl border border-border/30 px-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300"
                 >
                   <AccordionTrigger className="text-left font-semibold text-white hover:text-primary py-6 [&>svg]:text-white hover:[&>svg]:text-primary">
                     {faq.q}
