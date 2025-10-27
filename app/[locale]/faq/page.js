@@ -15,7 +15,7 @@ export default async function FAQPage({ params }) {
   const { locale } = await params;
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen ">
       <FAQSection />
     </main>
   );
