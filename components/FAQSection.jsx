@@ -33,12 +33,7 @@ const FAQSection = () => {
   return (
     <section className="relative py-32 px-6">
       {/* Background effects - Simplified for better mobile performance */}
-      <div className="absolute inset-0 z-0">
-        {/* Retained Radial Gradient - It's generally fine */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-white/5 to-white/5"></div>
-        {/* Simplified Blur - Less intense to aid GPU performance on scroll/render */}
-        <div className="bg-primary/5 absolute top-0 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 rounded-full blur-2xl opacity-70"></div>
-      </div>
+  
 
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* 1. Header with CSS-only animation for a smooth entrance */}
