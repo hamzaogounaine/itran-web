@@ -6,11 +6,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { motion } from "framer-motion";
+// Removed: import { motion } from "framer-motion";
 
 const FAQSection = () => {
   const t = useTranslations("faq");
-  const faqs = t.raw("items"); // fetch array of questions & answers
+  // Assuming 'items' is an array in your translation file, e.g., "faq.items": [{ "q": "...", "a": "..." }, ...]
+  // Note: t.raw() is a next-intl-specific method to fetch non-string data
+  const faqs = t.raw("items"); 
 
   return (
     <section className="relative py-32 px-6">
@@ -21,12 +23,8 @@ const FAQSection = () => {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        {/* Replaced motion.div with a standard div */}
+        <div className="text-center mb-20"> 
           <span className="text-primary font-semibold text-lg tracking-wide uppercase mb-4 block">
             FAQ
           </span>
@@ -39,39 +37,30 @@ const FAQSection = () => {
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="animate-slide-up"
-        >
+        {/* Replaced motion.div with a standard div */}
+        {/* The original 'animate-slide-up' class is kept if it provides CSS-based animation */}
+        <div className="animate-slide-up"> 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
+              <div> 
                 <AccordionItem
                   value={`item-${index}`}
                   className="bg-foreground/50 backdrop-blur-sm rounded-xl border border-border/30 px-6 hover:border-primary/40 hover:shadow-xl transition-all duration-300"
                 >
                   <AccordionTrigger className="text-left font-semibold text-white hover:text-primary py-6 [&>svg]:text-white hover:[&>svg]:text-primary">
-  {faq.q}
-</AccordionTrigger>
+                    {faq.q}
+                  </AccordionTrigger>
 
                   <AccordionContent className="text-gray-300 leading-relaxed pb-6">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
-              </motion.div>
+              </div>
             ))}
           </Accordion>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
