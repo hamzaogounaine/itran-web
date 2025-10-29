@@ -6,28 +6,28 @@
   "header": {
     "nav": {
       "home": "الرئيسية",
-      "features": "الميزات",
       "services": "الخدمات",
-      "products": "المنتجات",
       "pricing": "التسعير",
-      "about": "حول"
-    },
-    "products": {
-      "analytics": {
-        "name": "التحليلات",
-        "description": "تتبع مقاييسك"
-      },
-      "dashboard": {
-        "name": "لوحة التحكم",
-        "description": "إدارة بياناتك"
-      },
-      "reports": {
-        "name": "التقارير",
-        "description": "إنتاج رؤى"
-      }
-    },
-    "cta": {
+      "about": "حول",
       "getQuote": "احصل على عرض سعر"
+    },
+    "services": {
+      "webdev": {
+        "name": "تطوير المواقع",
+        "description": "بناء مواقع ويب سريعة ومذهلة"
+      },
+      "webdesign": {
+        "name": "تصميم المواقع",
+        "description": "تصميم مذهل, متجاوب"
+      },
+      "marketing": {
+        "name": "التسويق الرقمي",
+        "description": "تسويق رقمي لتحقيق النتائج"
+      },
+      "googleads": {
+        "name": "إعلانات جوجل",
+        "description": "إعلانات جوجل لتحقيق النتائج"
+      }
     },
     "language": {
       "label": "اللغة",

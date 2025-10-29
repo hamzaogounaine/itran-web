@@ -28,27 +28,30 @@ export default function Header1() {
   // Navigation items with translations
   const navItems = [
     { name: t('nav.home'), href: "/" },
-    { name: t('nav.features'), href: "/features" },
-    { name: t('nav.services'), href: "/services" },
     {
-      name: t('nav.products'),
-      href: "/products",
+      name: t('nav.services'),
+      href: "/services",
       hasDropdown: true,
       dropdownItems: [
         { 
-          name: t('products.analytics.name'), 
-          href: "/analytics", 
-          description: t('products.analytics.description')
+          name: t('services.webdev.name'), 
+          href: "/services/1", 
+          description: t('services.webdev.description')
         },
         { 
-          name: t('products.dashboard.name'), 
-          href: "/dashboard", 
-          description: t('products.dashboard.description')
+          name: t('services.webdesign.name'), 
+          href: "/services/2", 
+          description: t('services.webdesign.description')
         },
         { 
-          name: t('products.reports.name'), 
-          href: "/reports", 
-          description: t('products.reports.description')
+          name: t('services.marketing.name'), 
+          href: "/services/3", 
+          description: t('services.marketing.description')
+        },
+        { 
+          name: t('services.googleads.name'), 
+          href: "/services/4", 
+          description: t('services.googleads.description')
         },
       ],
     },
@@ -162,7 +165,7 @@ export default function Header1() {
                                 className="group relative block overflow-hidden rounded-xl px-4 py-3 transition-all duration-300 hover:bg-white/5"
                               >
                                 <motion.div
-                                  className="absolute inset-0 bg-gradient-to-r from-[var(--primary)]/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                                  className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                                   layoutId={`dropdown-hover-${dropdownItem.name}`}
                                 />
                                 <div className="relative flex items-start justify-between">
@@ -269,7 +272,7 @@ export default function Header1() {
                 href="/contact"
                 className="inline-flex items-center space-x-2 rounded-full bg-[var(--primary)] px-6 py-2.5 font-medium text-white transition-all duration-200 hover:shadow-lg"
               >
-                <span>{t('cta.getQuote')}</span>
+                <span>{t('nav.getQuote')}</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>

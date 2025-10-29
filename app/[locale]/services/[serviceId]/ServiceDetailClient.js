@@ -3,15 +3,13 @@ import { Link } from "@/i18n/navigation";
 import { ArrowBigRight, Star, CheckCircle, ArrowRight } from "lucide-react";
 import ServiceImages from "@/components/ServiceImages";
 import { motion } from "framer-motion";
-import React, { useState } from "react"; // 👈 Import useState
+import React, { useState } from "react"; 
 
 export default function ServiceDetailClient({ service, otherServices, locale }) {
-  // 1. STATE: Track the selected package
   const [selectedPackageIndex, setSelectedPackageIndex] = useState(null);
 
-  // 2. HANDLER: Function to handle the final button click
   const handleGetStarted = () => {
-    const defaultPhoneNumber = '0674180102';
+    const defaultPhoneNumber = '0669909179';
     const baseUrl = `https://wa.me/${defaultPhoneNumber}?text=`;
     
     let message = `Hello, I'm interested in your service: *${service.title[locale]}*!`;
@@ -28,14 +26,14 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
 
     const encodedMessage = encodeURIComponent(message);
     
-    // Navigate to the WhatsApp link
     window.open(baseUrl + encodedMessage, '_blank');
   };
 
   return (
     <main className="min-h-screen pt-20">
       {/* Main Service Section */}
-      <section className="relative py-16">
+      {/* This section's padding is fine for the header area */}
+      <section className="relative py-16"> 
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-white/5 to-white/5"></div>
         </div>
@@ -91,12 +89,12 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
                   {service.packages.map((pkg, idx) => (
                     <button 
                       key={idx} 
-                      onClick={() => setSelectedPackageIndex(idx)} // 👈 Set state on click
-                      className={` 
-                        border rounded-lg p-3 text-center transition-all duration-300 
+                      onClick={() => setSelectedPackageIndex(idx)} 
+                      className={`
+                        border rounded-lg p-3 text-center transition-all duration-300
                         ${selectedPackageIndex === idx 
-                            ? 'border-primary bg-primary/20 scale-[1.05]' // Active state
-                            : 'border-border/30 bg-foreground/50 hover:border-primary/40 hover:bg-primary/5' // Default state
+                            ? 'border-primary bg-primary/20 scale-[1.05]' 
+                            : 'border-border/30 bg-foreground/50 hover:border-primary/40 hover:bg-primary/5'
                         }
                       `}
                     >
@@ -121,10 +119,10 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
                 </div>
               </div>
 
-              {/* Main CTA Button (Updated to use Handler) */}
+              {/* Main CTA Button */}
               <button 
-                onClick={handleGetStarted} // 👈 Call the handler instead of using <Link>
-                className="group w-full bg-primary cursor-pointer text-white font-bold mt-6 py-4 rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative overflow-hidden"
+                onClick={handleGetStarted} 
+              className="group w-full bg-primary cursor-pointer text-white font-bold mt-6 py-4 rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center gap-4">
                     {selectedPackageIndex !== null 
@@ -140,8 +138,8 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
         </div>
       </section>
 
-      {/* Highlights Section (rest of the component remains the same) */}
-      <section className="relative py-16">
+      {/* Highlights Section (Changed py-16 to py-12) */}
+      <section className="relative py-12"> 
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -204,8 +202,8 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
         </div>
       </section>
 
-      {/* Other Services Section */}
-      <section className="relative py-16">
+      {/* Other Services Section (Changed py-16 to pt-12 to maintain bottom space but reduce top space) */}
+      <section className="relative pt-12 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}

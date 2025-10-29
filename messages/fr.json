@@ -9,26 +9,27 @@
       "home": "Accueil",
       "features": "Fonctionnalités",
       "services": "Services",
-      "products": "Produits",
       "pricing": "Tarification",
-      "about": "À propos"
-    },
-    "products": {
-      "analytics": {
-        "name": "Analytique",
-        "description": "Suivez vos métriques"
-      },
-      "dashboard": {
-        "name": "Tableau de bord",
-        "description": "Gérez vos données"
-      },
-      "reports": {
-        "name": "Rapports",
-        "description": "Générez des insights"
-      }
-    },
-    "cta": {
+      "about": "À propos",
       "getQuote": "Obtenir un devis"
+    },
+    "services": {
+      "webdev": {
+        "name": "Développement Web",
+        "description": "Créer des sites web rapides, sécurisés et évolutifs"
+      },
+      "webdesign": {
+        "name": "Design Web",
+        "description": "Design stunning, responsive websites"
+      },
+      "marketing": {
+        "name": "Marketing Digital",
+        "description": "Faire croître votre entreprise en ligne"
+      },
+      "googleads": {
+        "name": "Google Ads",
+        "description": "Publiciser votre entreprise en ligne"
+      }
     },
     "language": {
       "label": "Langue",

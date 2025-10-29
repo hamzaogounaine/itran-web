@@ -8,26 +8,27 @@
       "home": "Home",
       "features": "Features",
       "services": "Services",
-      "products": "Products",
       "pricing": "Pricing",
-      "about": "About"
+      "about": "About",
+      "getQuote": "Get a Quote"
     },
-    "products": {
-      "analytics": {
-        "name": "Analytics",
-        "description": "Track your metrics"
+    "services": {
+      "webdev": {
+        "name": "Web Development",
+        "description": "Build fast, secure, and scalable websites"
       },
-      "dashboard": {
-        "name": "Dashboard",
-        "description": "Manage your data"
+      "webdesign": {
+        "name": "Web Design",
+        "description": "Design stunning, responsive websites"
       },
-      "reports": {
-        "name": "Reports",
-        "description": "Generate insights"
+      "marketing": {
+        "name": "Marketing",
+        "description": "Grow your business online"
+      },
+      "googleads": {
+        "name": "Google Ads",
+        "description": "Advertise your business online"
       }
-    },
-    "cta": {
-      "getQuote": "Get a quote"
     },
     "language": {
       "label": "Language",

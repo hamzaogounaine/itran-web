@@ -17,7 +17,6 @@ export default async function ContactPage() {
 
   return (
     <>
-    <h1>Contact Us</h1>
       <ContactUs />
     </>
   );
