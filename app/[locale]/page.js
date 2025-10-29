@@ -1,5 +1,5 @@
 "use client";
-import ContactUs1 from "@/components/mvpblocks/contact-us-1";
+import HomeContactUs from "@/components/mvpblocks/HomeContactForm";
 import CTA2 from "@/components/mvpblocks/cta-2";
 import Feature1 from "@/components/mvpblocks/feature-1";
 import GradientHero from "@/components/mvpblocks/gradient-hero";
@@ -34,7 +34,7 @@ const Page = () => {
       
         <Projects />
         <Feature1 />
-        <ContactUs1 />
+        <HomeContactUs />
         <div className="flex ju">
           <CTA2 />
         </div>

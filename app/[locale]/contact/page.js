@@ -1,5 +1,5 @@
 // app/[locale]/contact/page.tsx
-import ContactUs1 from "@/components/mvpblocks/contact-us-1";
+import ContactUs from "@/components/mvpblocks/contact-us-1";
 import { getTranslations } from "next-intl/server";
 
 // Generate localized metadata
@@ -11,14 +11,14 @@ export async function generateMetadata({ params: { locale } }) {
   };
 }
 
-export default async function ContactPage({ params: { locale } }) {
+export default async function ContactPage() {
   // Fetch a set of translations, including the description and info texts
-  const t = await getTranslations({ locale, namespace: "contact" });
+  // const t = await getTranslations({ locale, namespace: "contact" });
 
   return (
     <>
     <h1>Contact Us</h1>
-      <ContactUs1 />
+      <ContactUs />
     </>
   );
 }

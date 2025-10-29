@@ -1,10 +1,37 @@
 "use client";
 import { Link } from "@/i18n/navigation";
-import { ArrowBigRight, Star, CheckCircle } from "lucide-react";
+import { ArrowBigRight, Star, CheckCircle, ArrowRight } from "lucide-react";
 import ServiceImages from "@/components/ServiceImages";
 import { motion } from "framer-motion";
+import React, { useState } from "react"; // 👈 Import useState
 
 export default function ServiceDetailClient({ service, otherServices, locale }) {
+  // 1. STATE: Track the selected package
+  const [selectedPackageIndex, setSelectedPackageIndex] = useState(null);
+
+  // 2. HANDLER: Function to handle the final button click
+  const handleGetStarted = () => {
+    const defaultPhoneNumber = '0674180102';
+    const baseUrl = `https://wa.me/${defaultPhoneNumber}?text=`;
+    
+    let message = `Hello, I'm interested in your service: *${service.title[locale]}*!`;
+    
+    if (selectedPackageIndex !== null) {
+        const pkg = service.packages[selectedPackageIndex];
+        const packageName = pkg.name[locale];
+        const packageDuration = pkg.duration[locale];
+
+        message += ` I'd like to get started with the *${packageName}* package (${packageDuration}).`;
+    } else {
+        message += ` Could you tell me more about your packages?`;
+    }
+
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Navigate to the WhatsApp link
+    window.open(baseUrl + encodedMessage, '_blank');
+  };
+
   return (
     <main className="min-h-screen pt-20">
       {/* Main Service Section */}
@@ -55,14 +82,24 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
                 </span>
               </div>
 
-              {/* Packages */}
+              {/* Packages (Updated to handle selection) */}
               <div>
                 <label className="block text-sm font-medium text-gray-300 mb-3">
                   {locale === 'fr' ? 'Choisir un forfait' : locale === 'ar' ? 'اختر الباقة' : 'Choose Package'}
                 </label>
                 <div className="grid grid-cols-3 gap-3">
                   {service.packages.map((pkg, idx) => (
-                    <button key={idx} className="border border-border/30 bg-foreground/50 rounded-lg p-3 text-center hover:border-primary/40 hover:bg-primary/5 transition-all duration-300">
+                    <button 
+                      key={idx} 
+                      onClick={() => setSelectedPackageIndex(idx)} // 👈 Set state on click
+                      className={` 
+                        border rounded-lg p-3 text-center transition-all duration-300 
+                        ${selectedPackageIndex === idx 
+                            ? 'border-primary bg-primary/20 scale-[1.05]' // Active state
+                            : 'border-border/30 bg-foreground/50 hover:border-primary/40 hover:bg-primary/5' // Default state
+                        }
+                      `}
+                    >
                       <span className="font-semibold text-white text-sm">{pkg.name[locale]}</span>
                       <p className="text-xs text-gray-400 mt-1">{pkg.duration[locale]}</p>
                     </button>
@@ -84,21 +121,26 @@ export default function ServiceDetailClient({ service, otherServices, locale }) 
                 </div>
               </div>
 
-              <Link href="https://wa.me/0669909179">
-                <button className="group w-full bg-primary text-white font-bold mt-6 py-4 rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2">
-                  <span className="relative z-10 flex items-center">
-                    {locale === 'fr' ? 'Commencer maintenant' : locale === 'ar' ? 'ابدأ الآن' : 'Get Started Now'}
-                    <ArrowBigRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                  <span className="from-primary via-primary/90 to-primary/80 absolute inset-0 z-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-full"></span>
-                </button>
-              </Link>
+              {/* Main CTA Button (Updated to use Handler) */}
+              <button 
+                onClick={handleGetStarted} // 👈 Call the handler instead of using <Link>
+                className="group w-full bg-primary cursor-pointer text-white font-bold mt-6 py-4 rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-4">
+                    {selectedPackageIndex !== null 
+                        ? (locale === 'fr' ? `Démarrer avec ${service.packages[selectedPackageIndex].name[locale]}` : locale === 'ar' ? `ابدأ بـ ${service.packages[selectedPackageIndex].name[locale]}` : `Get Started with ${service.packages[selectedPackageIndex].name[locale]}`)
+                        : (locale === 'fr' ? 'Commencer maintenant' : locale === 'ar' ? 'ابدأ الآن' : 'Get Started Now')
+                    }
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+                <span className="from-primary via-primary/90 to-primary/80 absolute inset-0 z-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-full"></span>
+              </button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Highlights Section */}
+      {/* Highlights Section (rest of the component remains the same) */}
       <section className="relative py-16">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
