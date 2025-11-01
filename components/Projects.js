@@ -1,99 +1,50 @@
+// components/Projects.jsx
 'use client';
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import ProjectCard from "./mvpblocks/projectsCard";
-import { useTranslations } from "next-intl";
+import ProjectModal from "./ProjectModal"; // Import the new modal component
+import { useLocale, useTranslations } from "next-intl";
+import getProjects from "@/lib/getProjects";
 
 const Projects = () => {
   const t = useTranslations('projects');
+  const currentLocale = useLocale();
 
-  const projects = [
-    {
-      title: "La Maison Roaa - Site Web de Réservation...",
-      description:
-        "J'ai développé cette plateforme pour La Maison Roaa, un restaurant marocain haut de gamme qui avait besoin d'un...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-    {
-      title: "Digihive Studio - Outil de Gestion d'Agence...",
-      description:
-        "J'ai construit ce centre de commande complet pour Digihive, une agence créative qui jonglait avec trop d'outils...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-    {
-      title: "RGB Glow - Plateforme E-commerce...",
-      description:
-        "Ce projet consistait à créer une boutique en ligne complète pour RGB Glow, une marque de cosmétiques premium au...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-    {
-      title: "NextAgency - CRM Moderne...",
-      description:
-        "Un tableau de bord intuitif pour gérer les leads, les campagnes marketing et les clients dans une interface claire...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-    {
-      title: "Shopify Clone - Application E-commerce complète...",
-      description:
-        "Reproduction du fonctionnement d'une boutique Shopify avec panier, paiement et gestion des stocks en temps réel...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-    {
-      title: "EventX - Plateforme d'événements interactifs...",
-      description:
-        "Application web pour organiser et gérer des événements avec billetterie, calendrier et notifications en direct...",
-      images: [
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-        "/illustrations/dashboard.png",
-      ],
-    },
-  ];
-
+  const [rawProjects, setRawProjects] = useState([]);
   const [visibleCount, setVisibleCount] = useState(3);
+  const [selectedProject, setSelectedProject] = useState(null); // State to hold the project for the modal
+
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, {
-    once: true, // Only trigger once
-    margin: "-100px", // Start animating a bit before entering view
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const projects = await getProjects();
+      setRawProjects(projects);
+    };
+    fetchProjects();
+  }, []);
+
+  // Data Transformation: Map raw data to localized card props
+  const localizedProjects = rawProjects.map(project => {
+    return {
+      id: project.id,
+      title: project.Title || project.id, 
+      description: project.Desctiption[currentLocale] || 
+                   project.Desctiption.en,
+      images: project.Images || [],
+      features: project.Features[currentLocale] || 
+                project.Features.en,
+    };
   });
 
   const handleShowMore = () => setVisibleCount((prev) => prev + 3);
   const handleShowLess = () => setVisibleCount(3);
 
   // Animation variants
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.12,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+  const container = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
+  const item = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 
   return (
     <section className="max-w-7xl mx-auto py-12 px-4 sm:px-8">
@@ -105,8 +56,7 @@ const Projects = () => {
       </p>
       <hr className="mx-auto mt-5 mb-10 h-px w-1/2 bg-gray-700" />
 
-
-      {/* Animated Grid — only animate when in view */}
+      {/* Animated Grid */}
       <motion.div
         ref={containerRef}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -115,9 +65,9 @@ const Projects = () => {
         animate={isInView ? "visible" : "hidden"}
       >
         <AnimatePresence>
-          {projects.slice(0, visibleCount).map((project, index) => (
+          {localizedProjects.slice(0, visibleCount).map((project) => (
             <motion.div
-              key={index}
+              key={project.id}
               variants={item}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -128,6 +78,8 @@ const Projects = () => {
                 title={project.title}
                 description={project.description}
                 images={project.images}
+                // Pass a function to open the modal with the specific project's full details
+                onViewDetails={() => setSelectedProject(project)} 
               />
             </motion.div>
           ))}
@@ -136,7 +88,7 @@ const Projects = () => {
 
       {/* Show more / less button */}
       <div className="flex justify-center mt-10">
-        {visibleCount < projects.length ? (
+        {visibleCount < localizedProjects.length ? (
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -146,7 +98,7 @@ const Projects = () => {
             {t('showMore') || 'Show More'}
           </motion.button>
         ) : (
-          projects.length > 3 && (
+          localizedProjects.length > 3 && (
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -158,6 +110,12 @@ const Projects = () => {
           )
         )}
       </div>
+
+      {/* The Project Modal component */}
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </section>
   );
 };
