@@ -127,8 +127,8 @@ const ContactUs = () => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+212 6 7418 0102',
-      href: 'https://wa.me/+212674180102'
+      value: '+212 555555555',
+      href: 'https://wa.me/+212555555555'
     },
     {
       icon: MapPin,
